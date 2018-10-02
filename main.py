@@ -10,6 +10,9 @@ def op_sum(first_num, second_num):
     print(format('\nLa suma entre {} y {} es {}'.format(first_num, second_num, first_num + second_num)))
     press_enter_to_continue()
 
+def op_sub(first_num, second_num):
+    print(format('\nLa resta entre {} y {} es {}'.format(first_num, second_num, first_num - second_num)))
+    press_enter_to_continue()
 
 def op_power(first_num, second_num):
     """
@@ -103,6 +106,9 @@ def main():
             # Suma
             if operation == 1:
                 op_sum(first_num, second_num)
+
+            if operation == 2:
+                op_sub(first_num, second_num)
 
             # Elevación
             if operation == 5:
