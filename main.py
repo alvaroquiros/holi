@@ -10,9 +10,38 @@ def op_sum(first_num, second_num):
     print(format('\nLa suma entre {} y {} es {}'.format(first_num, second_num, first_num + second_num)))
     press_enter_to_continue()
 
+
 def op_sub(first_num, second_num):
     print(format('\nLa resta entre {} y {} es {}'.format(first_num, second_num, first_num - second_num)))
     press_enter_to_continue()
+
+
+def op_multiply(first_num, second_num):
+    res = first_num
+    aux_second = second_num
+    second_num -= 1
+
+    # Se suma el primer numero con sigo mismo N veces (segundo numero)
+    while second_num > 0:
+        res += first_num
+        second_num -= 1
+
+    print(format('\nLa multiplicación {} por {} es {}'.format(first_num, aux_second, res)))
+    press_enter_to_continue()
+
+def op_division(first_num, second_num):
+    res = first_num
+    count = 0
+
+    # Se va restando al dividendo el divisor hasta que el dividendo sea mayor o igual que el divisor
+    # Se cuenta las veces que se ha restado, el resultado es el cociente
+    while(res >= second_num):
+        res -= second_num
+        count += 1
+
+    print(format('\nLa division {} entre {} es {}'.format(first_num, second_num, count)))
+    press_enter_to_continue()
+
 
 def op_power(first_num, second_num):
     """
@@ -89,10 +118,14 @@ def main():
 
             if 1 <= operation <= 6:
                 valid_input = True
+                if operation == 4:
+                    first_num = abs(int(input('\nIntroduce el dividendo: ')))
+                    second_num = abs(int(input('Introduce el divisor: ')))
 
-                # Por sencillez las operaciones se realizaran con números absolutos
-                first_num = abs(int(input('\nIntroduce el primer número: ')))
-                second_num = abs(int(input('Introduce el segundo número: ')))
+                else:
+                    # Por sencillez las operaciones se realizaran con números absolutos
+                    first_num = abs(int(input('\nIntroduce el primer número: ')))
+                    second_num = abs(int(input('Introduce el segundo número: ')))
 
             if operation == -9:
                 valid_input = True
@@ -107,8 +140,17 @@ def main():
             if operation == 1:
                 op_sum(first_num, second_num)
 
+            # Resta
             if operation == 2:
                 op_sub(first_num, second_num)
+
+            # Multiplicación
+            if operation == 3:
+                op_multiply(first_num, second_num)
+
+            # División
+            if operation == 4:
+                op_division(first_num, second_num)
 
             # Elevación
             if operation == 5:
